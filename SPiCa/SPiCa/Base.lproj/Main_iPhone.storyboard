@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cMf-17-76D">
+    <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="homeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k90-nq-1f0">
+                                <rect key="frame" x="97" y="223" width="127" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="写真を撮る">
+                                    <color key="titleColor" red="0.72232262599999997" green="0.87359805079999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Camera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="46Y-Jj-H2K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5F-1I-QSb">
+                                <rect key="frame" x="50" y="329" width="221" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="アルバムから選択する">
+                                    <color key="titleColor" red="0.72232262599999997" green="0.87359805079999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Album:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="El1-8H-Ape"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="k90-nq-1f0" secondAttribute="centerX" id="t1l-1b-T98"/>
+                            <constraint firstAttribute="centerX" secondItem="F5F-1I-QSb" secondAttribute="centerX" id="t5S-5V-SPF"/>
+                            <constraint firstAttribute="centerY" secondItem="F5F-1I-QSb" secondAttribute="centerY" constant="-60" id="v2X-uI-jQL"/>
+                            <constraint firstAttribute="centerY" secondItem="k90-nq-1f0" secondAttribute="centerY" constant="46" id="xwq-RN-c53"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fkN-3q-xeq"/>
+                    <connections>
+                        <segue destination="kl6-lz-0SI" kind="push" identifier="toEditStar" id="mkf-1K-e8W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="370" y="-248"/>
+        </scene>
+        <!--Edit Star View Controller-->
+        <scene sceneID="Fpe-WV-SnX">
+            <objects>
+                <viewController storyboardIdentifier="editStarViewController" id="kl6-lz-0SI" customClass="editStarViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="beK-J1-l8p"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xcr-V1-BjF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uOd-cb-Bw6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gd6-MF-Cuy">
+                        <barButtonItem key="rightBarButtonItem" title="決定" id="KXP-ZR-RzO">
+                            <connections>
+                                <segue destination="CaR-o7-FbN" kind="push" identifier="toEditLine" id="iry-to-Slt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLi-4j-QYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="-248"/>
+        </scene>
+        <!--Edit Line View Controller-->
+        <scene sceneID="0rW-IW-skJ">
+            <objects>
+                <viewController id="CaR-o7-FbN" customClass="editLineViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gcA-g9-dCH"/>
+                        <viewControllerLayoutGuide type="bottom" id="QEE-si-hfT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yw3-gx-5cO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2D5-Su-1F9">
+                        <barButtonItem key="rightBarButtonItem" title="完了" id="w8q-ai-rc7">
+                            <connections>
+                                <action selector="actionsocial:" destination="CaR-o7-FbN" id="vPG-84-2Ag"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITP-YP-smb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="-248"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rWk-2w-xSW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cMf-17-76D" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HVo-6w-0WC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="nm7-DJ-hU9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRb-rb-AeA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29" y="-248"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

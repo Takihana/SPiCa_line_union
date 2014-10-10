@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E15FFE46-8540-4BD5-A875-B00F22907BC6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SPiCa</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>39743189314708C3DE9595A26FD911D6512D5822</key>
+		<string>https://github.com/SPiCaPJ/SPiCa.git</string>
+		<key>ae26ec68-fddc-0a1e-2d08-ce57b7db7bff++505</key>
+		<string>https://github.com/SPiCaPJ/SPiCa.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SPiCa/SPiCa/SPiCa.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>39743189314708C3DE9595A26FD911D6512D5822</key>
+		<string>../../../../..</string>
+		<key>ae26ec68-fddc-0a1e-2d08-ce57b7db7bff++505</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/SPiCaPJ/SPiCa.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ae26ec68-fddc-0a1e-2d08-ce57b7db7bff++505</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>39743189314708C3DE9595A26FD911D6512D5822</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ae26ec68-fddc-0a1e-2d08-ce57b7db7bff++505</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SPiCa</string>
+		</dict>
+	</array>
+</dict>
+</plist>
