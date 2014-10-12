@@ -11,6 +11,9 @@
 @interface editLineViewController : UIViewController
 
 @property UIImage *picture;
+@property CGPoint test;
+@property CGPoint points;
+@property CGContextRef context;
 
 @property NSArray *stars;
 - (IBAction)actionsocial:(id)sender;
