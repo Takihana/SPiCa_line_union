@@ -89,37 +89,58 @@ UIImageView *showImageView;
     NSLog(@"location.x:%f location.y:%f", location.x, location.y);
     
     //座標の周りに領域を作る。今回は決めうちしているが、本来は座標の配列分繰り返して判定する。
-    CGRect rc = CGRectMake(300,300,100,100);
-    CGRect rc2 = CGRectMake(300,500,100,100);
+    //CGRect rc = CGRectMake(300,300,100,100);
+    //CGRect rc2 = CGRectMake(300,500,100,100);
     
     
-    /*
+    
      
     //星座標を取得
-    NSValue* Starvalue = [NSValue new];
+    //NSValue* Starvalue = [NSValue new];
     CGPoint Starpoints[100];
+    //星に収束したかを表すフラグ
+    bool touchflag = false;
     
     int starCount1=0;
-    for (NSValue *Starvalue in self.stars) {
-        Starpoints[starCount1++] = [Starvalue CGPointValue];
+    //for (NSValue *Starvalue in self.stars) {
+    for(DragView *StarView in self.stars){
+        Starpoints[starCount1++] = StarView.frame.origin;
     }
     
     //星座標をタッチしたか確認
     int starCount2=0;
     for(starCount2 = 0; starCount2<starCount1;starCount2++){
-        CGRect rc = CGRectMake(Starpoints[starCount2].x-50,Starpoints[starCount2].y-50,100,100);
-        if(CGRectContainsPoint(rc,location)){
+        //CGRect rc = CGRectMake(Starpoints[starCount2].x,Starpoints[starCount2].y,100,100);
+        
+        float rx = location.x - Starpoints[starCount2].x;
+        float ry = location.y - Starpoints[starCount2].y;
+        //距離rを求める
+        float r = sqrt(rx*rx + ry*ry);
+        NSLog(@"距離：%f", r);
+        
+        if(r <= 40) {
             NSLog(@"this touch! Stars!");
-            location.x = Starpoints[starCount2].x;
-            location.y = Starpoints[starCount2].y;
-            
+            touchflag = true;
+            location.x = Starpoints[starCount2].x+10;
+            location.y = Starpoints[starCount2].y-35;
         }
+        
+        //if(CGRectContainsPoint(rc,location)){
+        //    NSLog(@"this touch! Stars!");
+        //    location.x = Starpoints[starCount2].x;
+        //    location.y = Starpoints[starCount2].y;
+        //
+        //}
         
     }
     
-     */
+    //星以外をタッチしたらフラグそのままでスルーするようにする処理を書くこと（フラグでも使う）
+    if(touchflag == false){
+        NSLog(@"this Not touch!? Stars!?");
+        return;
+    }
     
-     
+    /*
      if(CGRectContainsPoint(rc,location)){
         //if(CGRectContainsPoint(self.uiView.frame,location)){
         NSLog(@"this touch! rc!");
@@ -139,7 +160,7 @@ UIImageView *showImageView;
         
         
     }
-    
+    */
     
     //float x = location.x - org.x;
     //float y = -(location.y - org.y);
