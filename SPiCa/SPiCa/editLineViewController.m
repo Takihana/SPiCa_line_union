@@ -112,17 +112,17 @@ UIImageView *showImageView;
     for(starCount2 = 0; starCount2<starCount1;starCount2++){
         //CGRect rc = CGRectMake(Starpoints[starCount2].x,Starpoints[starCount2].y,100,100);
         
-        float rx = location.x - Starpoints[starCount2].x;
-        float ry = location.y - Starpoints[starCount2].y;
+        float rx = location.x - Starpoints[starCount2].x-10;
+        float ry = location.y - Starpoints[starCount2].y+34;
         //距離rを求める
         float r = sqrt(rx*rx + ry*ry);
         NSLog(@"距離：%f", r);
         
-        if(r <= 40) {
+        if(r <= 10) {
             NSLog(@"this touch! Stars!");
             touchflag = true;
             location.x = Starpoints[starCount2].x+10;
-            location.y = Starpoints[starCount2].y-35;
+            location.y = Starpoints[starCount2].y-34;
         }
         
         //if(CGRectContainsPoint(rc,location)){
