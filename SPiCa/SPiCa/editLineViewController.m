@@ -13,8 +13,8 @@
 @property  NSMutableArray *TouchArray;
 @property (assign, nonatomic) Boolean flag;
 
-@property float x;
-@property float y;
+//@property float x;
+//@property float y;
 
 @end
 
@@ -59,8 +59,8 @@ UIImageView *showImageView;
     //線をつなぐための配列
     self.TouchArray = [NSMutableArray array];
     
-    CGPoint org = CGPointMake(self.view.frame.size.width/2,
-                              self.view.frame.size.height/2);
+    //CGPoint org = CGPointMake(self.view.frame.size.width/2,
+    //                          self.view.frame.size.height/2);
     
     CGPoint Init = CGPointMake(0,0);
     NSValue* InitPoint = [NSValue valueWithCGPoint:Init];
@@ -68,10 +68,6 @@ UIImageView *showImageView;
     [self.TouchArray addObject:InitPoint];
     [self.TouchArray addObject:InitPoint];
     
-    NSLog(@"org.x:%f org.y:%f", org.x, org.y);
-    
-    self.x = org.x;
-    self.y = org.y;
     
 }
 
@@ -88,16 +84,9 @@ UIImageView *showImageView;
     
     NSLog(@"location.x:%f location.y:%f", location.x, location.y);
     
-    //座標の周りに領域を作る。今回は決めうちしているが、本来は座標の配列分繰り返して判定する。
-    //CGRect rc = CGRectMake(300,300,100,100);
-    //CGRect rc2 = CGRectMake(300,500,100,100);
-    
-    
-    
-     
     //星座標を取得
     //NSValue* Starvalue = [NSValue new];
-    CGPoint Starpoints[100];
+    CGPoint Starpoints[100]={0};
     //星に収束したかを表すフラグ
     bool touchflag = false;
     
@@ -125,12 +114,7 @@ UIImageView *showImageView;
             location.y = Starpoints[starCount2].y-34;
         }
         
-        //if(CGRectContainsPoint(rc,location)){
-        //    NSLog(@"this touch! Stars!");
-        //    location.x = Starpoints[starCount2].x;
-        //    location.y = Starpoints[starCount2].y;
-        //
-        //}
+
         
     }
     
@@ -140,41 +124,6 @@ UIImageView *showImageView;
         return;
     }
     
-    /*
-     if(CGRectContainsPoint(rc,location)){
-        //if(CGRectContainsPoint(self.uiView.frame,location)){
-        NSLog(@"this touch! rc!");
-        
-        location.x=300;
-        location.y=300;
-        
-        
-    }
-    
-    if(CGRectContainsPoint(rc2,location)){
-        //if(CGRectContainsPoint(self.uiView.frame,location)){
-        NSLog(@"this touch! rc2!");
-        
-        location.x=300;
-        location.y=500;
-        
-        
-    }
-    */
-    
-    //float x = location.x - org.x;
-    //float y = -(location.y - org.y);
-    // 距離rを求める
-    //float r = sqrt(x*x + y*y);
-    //NSLog(@"距離：%f", r);
-    
-    //if(r <= 200) {
-    //    location.x = org.x;
-    //    location.y = org.y;
-    //
-    //    NSLog(@"変化後.x:%f 変化後.y:%f", location.x, location.y);
-    //
-    //}
     
     
     
@@ -204,8 +153,8 @@ UIImageView *showImageView;
         //[mutableArray removeObjectAtIndexes:indexes];
         
         //現在の線を引くための座標が格納されている配列の値を取得したもの
-        NSValue* valueline = [self.TouchArray objectAtIndex:0];
-        CGPoint linepoints[100];
+        //NSValue* valueline = [self.TouchArray objectAtIndex:0];
+        CGPoint linepoints[100]={0};
         
         //重複を削除するために一度点の座標をもってくる
         int w=0;
@@ -219,6 +168,15 @@ UIImageView *showImageView;
             float FromY = linepoints[a].y;
             float ToX   = linepoints[a+1].x;
             float ToY   = linepoints[a+1].y;
+            
+            //同じ星を選択したものあれば削除するためにインデックスを取得
+            
+            if((FromX == ToX)&&(FromY == ToY)&&(FromX != 0)&&(FromY != 0)&&(ToX==0)&&(ToY==0)){
+                [indexes addIndex:a];
+                [indexes addIndex:a+1];
+                
+            }
+            
             //配列の中に重複があったら削除するためにインデックスを取得
             for(int b = a + 2;b < w-1;b=b+2){
                 if((FromX == linepoints[b].x ) && (FromY == linepoints[b].y)){
@@ -250,16 +208,42 @@ UIImageView *showImageView;
         
         showImageView.image = self.picture;
         
-        //線を引くための頂点を格納する配列(現在は固定長だが可変長にしたい)
+        //線を引くための頂点を格納する配列
         
-        NSValue* value = [self.TouchArray objectAtIndex:0];
-        CGPoint points[100];
+        //NSValue* value = [self.TouchArray objectAtIndex:0];
+        CGPoint points[106]={0};
+        
+        //削除するインデックスを確保する配列
+        NSMutableIndexSet* Overindexes = [NSMutableIndexSet new];
         
         //線を引くための頂点を取得
         int j=0;
+        //線が５０本以上だったとき５０本以上の線を示す座標を表すフラグ
+        bool lineflag = true;
+        
         for (NSValue *value in self.TouchArray) {
-            points[j++] = [value CGPointValue];
+            
+            //線の数が５０本以上にならないようにする
+            if(j>=102){
+                
+                NSLog(@"これ以上線は引けません");
+                //break;
+                lineflag = false;
+                [Overindexes addIndex:j];
+                j++;
+                
+            }
+            
+            if(lineflag == true){
+                
+                points[j++] = [value CGPointValue];
+                
+            }
+            
         }
+        
+        // まとめて削除(50本以上を示す座標)
+        [self.TouchArray removeObjectsAtIndexes:Overindexes];
         
         // 線を引くキャンパスのサイズや不透明度、スケールを指定する
         UIGraphicsBeginImageContextWithOptions(showImageView.frame.size, YES, 0.0);
@@ -268,7 +252,7 @@ UIImageView *showImageView;
         // 今まで記述したものを描く（このシステムでは存在していないはず）
         [showImageView.image drawInRect:showImageView.bounds];
         // 描画する線の情報を記述
-        CGContextSetLineWidth(context, 1.0f);
+        CGContextSetLineWidth(context, 3.0f);
         CGContextSetRGBStrokeColor(context, 255, 255, 255, 50);
         
         // 線で一回目と二回目でタッチした所をつなぐ
@@ -293,8 +277,6 @@ UIImageView *showImageView;
         UIGraphicsEndImageContext();
         // フラグを一回目にする
         self.flag = false;
-        
-        
         
         
     }
