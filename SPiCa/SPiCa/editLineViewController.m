@@ -154,7 +154,7 @@ UIImageView *showImageView;
         
         //現在の線を引くための座標が格納されている配列の値を取得したもの
         //NSValue* valueline = [self.TouchArray objectAtIndex:0];
-        CGPoint linepoints[100]={0};
+        CGPoint linepoints[106]={0};
         
         //重複を削除するために一度点の座標をもってくる
         int w=0;
@@ -171,7 +171,8 @@ UIImageView *showImageView;
             
             //同じ星を選択したものあれば削除するためにインデックスを取得
             
-            if((FromX == ToX)&&(FromY == ToY)&&(FromX != 0)&&(FromY != 0)&&(ToX==0)&&(ToY==0)){
+            if((FromX == ToX)&&(FromY == ToY)&&(FromX != 0)&&(FromY != 0)&&(ToX!=0)&&(ToY!=0)){
+                NSLog(@"始点と終点が同じ点がありました");
                 [indexes addIndex:a];
                 [indexes addIndex:a+1];
                 
