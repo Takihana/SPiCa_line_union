@@ -103,6 +103,10 @@ UIImageView *showImageView;
         
         float rx = location.x - Starpoints[starCount2].x-10;
         float ry = location.y - Starpoints[starCount2].y+34;
+        
+        //float rx = location.x - Starpoints[starCount2].x-20;
+        //float ry = location.y - Starpoints[starCount2].y+20;
+        
         //距離rを求める
         float r = sqrt(rx*rx + ry*ry);
         NSLog(@"距離：%f", r);
@@ -112,6 +116,10 @@ UIImageView *showImageView;
             touchflag = true;
             location.x = Starpoints[starCount2].x+10;
             location.y = Starpoints[starCount2].y-34;
+            
+            //location.x = Starpoints[starCount2].x+10;
+            //location.y = Starpoints[starCount2].y-34;
+            
         }
         
 
@@ -171,7 +179,7 @@ UIImageView *showImageView;
             
             //同じ星を選択したものあれば削除するためにインデックスを取得
             
-            if((FromX == ToX)&&(FromY == ToY)&&(FromX != 0)&&(FromY != 0)&&(ToX!=0)&&(ToY!=0)){
+            if(((FromX == ToX)&&(FromY == ToY))&&((FromX != 0)&&(FromY != 0))&&((ToX!=0)&&(ToY!=0))){
                 NSLog(@"始点と終点が同じ点がありました");
                 [indexes addIndex:a];
                 [indexes addIndex:a+1];
